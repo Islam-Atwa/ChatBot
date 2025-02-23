@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <!-- CSS File  -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Rubik:ital,wght@0,300..900;1,300..900&family=Signika:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- <link rel="stylesheet" href="https://cdn.boxicons.com/boxicons/2.0.7/css/boxicons.min.css"> -->
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chatbot">
+<!-- Chat Header -->
+            <div class="chat-header">
+                <i class='bx bx-chevron-down'></i>
+                <div class="image">
+                    <span>مساعدك الذكي </span>
+                    <img src="/assets/chatbot.png" alt="" >
+                </div>
+            </div>
+
+<!-- Chat Body  -->
+            <div class="chat-body">
+                <!-- Bot Message -->
+                <div class="message bot-message">
+                    <img class="botmsg-icon" src="/assets/chatbot.png" alt="">
+                    <div class="message-text botmsg-text">
+                        <p>أهلا انا مساعدك الذكي <br>ازاي أقدر أساعدك</p>
+                    </div>
+                </div>
+                <!-- User Message -->
+                <div class="message user-message">
+                    <div class="message-text usermsg-text">
+                        <p>أريد أن أعرف المزيد عنك</p>
+                    </div>
+                </div>
+
+                <!-- dots ...-->
+                <div class="message bot-message">
+                    <img class="botmsg-icon" src="/assets/chatbot.png" alt="">
+                    <div class="message-text dots">
+                        <!-- span dot-->
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Chat Footer -->
+            <div class="chat-footer">
+                <form action="#"> 
+                    <button class="send-button">
+                        <i class='bx bx-send bx-rotate-180'></i>
+                    </button>
+                    <textarea class="input" placeholder="...اكتب رسالتك"></textarea>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
