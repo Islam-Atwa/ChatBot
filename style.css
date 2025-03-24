@@ -34,7 +34,7 @@ ul{
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    overflow: hidden;
+    /* overflow-y: scroll; */
 }
 
 .chat-header{
@@ -77,23 +77,34 @@ img{
 .chat-body{
     display: flex;
     flex-direction: column;
-    padding: 25px 22px;
-    gap: 20px;
+    /* top  right   bottom  left */
+    padding:2rem 10px 3rem 10px ;
+    gap: 14px;
     overflow-y: auto;
     font-size: 18px;
+    max-height: 400px;
+}
+
+.message-text p{
+    white-space: pre-wrap; /* يجعل النص يظهر بشكل صحيح */
+
+
 }
 .message-text{
     border-radius: 10px;
     padding: 5px 15px;
     margin-bottom: .8rem;
 }
+
+
 .bot-message{
     display: flex;
-    gap: 10px;
-    align-items: center;
+    gap: 4px;
+    align-items:start;
     flex-direction: row-reverse;
 }
 .botmsg-text{
+
     background-color: var(--bot-message-color);
     color: black;
 }
@@ -114,7 +125,7 @@ img{
     color: black;
 }
 .dots{
-    display:flex;
+    display:none;
     gap: 5px;
     padding-block: 5px;
 }
@@ -153,7 +164,8 @@ img{
     position: absolute;
     bottom: 0;
     width: 100%;
-    overflow-y: auto;
+    
+    /* overflow-x: auto; */
 }
 
 .input, .send-button{
@@ -182,7 +194,7 @@ form {
     padding: 12px 5px;
     font-size: 18px;
     overflow-y: auto;
-    resize: none;
+    resize: none; 
 }
 
 .send-button {

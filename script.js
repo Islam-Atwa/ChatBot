@@ -5,6 +5,7 @@ const chatMessages = document.querySelector('.chat-body');
 const dots = document.querySelector('.dots');
 let userMessage; // لتخزين الرسالة التي يكتبها المستخدم
 
+// import {HiddenInstruction} from './config.js';
 
 // Google Generate Response
 const API_KEY = "AIzaSyBSo2hOo8FamGVkzLJeVyrmHwxQ8gkJYJQ";
@@ -13,6 +14,7 @@ const genrateResponse = (botResponse)=>{
 
     const messageElement = botResponse.querySelector('p');
 
+    const HiddenInstruction = " " ;
     const requestOptions = {
         method: 'POST',
         headers:{
@@ -20,13 +22,21 @@ const genrateResponse = (botResponse)=>{
             // "Authorization": 'Bearer ${API_KEY}'
         },
         body: JSON.stringify({
-            contents: [{ parts: [{ text: userMessage }] }]
+            // Hidden Instruction
+            contents: [
+                // {parts: [{text: " انت الان مساعد ذكي لدكتور جلديه  "}]},
+                { parts: [{ text: userMessage }] }
+            ]
         })
         
     }
         fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
 
-            messageElement.textContent = data.candidates[0].content.parts[0].text;
+            if (data && data.candidates && data.candidates.length > 0) {
+                messageElement.textContent = data.candidates[0].content.parts[0].text;
+            } else {
+                messageElement.textContent = "عذرًا، لم أتمكن من تقديم رد الآن.";
+            }
             console.log(data);
         }).catch((error) => {
             console.log(error);
@@ -35,6 +45,9 @@ const genrateResponse = (botResponse)=>{
 }
 
 
+const scrollToBottom = () => {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+};
 
 
 
@@ -65,17 +78,22 @@ const handleChat  = () => {
     
     // إضافة رسالة المستخدم إلى الشاشة
     chatMessages.appendChild(createChat(userMessage, "user-message"));
-    
+    setTimeout(scrollToBottom, 500); // التأخير لضمان تنفيذ التمرير بعد الإضافة
+
+
     setTimeout(()=>{
         
         // إضافة رسالة الروبوت إلى الشاشة
         const botResponse = createChat("..", "bot-message");
         chatMessages.appendChild(botResponse);
         genrateResponse(botResponse);
-
+        scrollToBottom();
     },500);
     // dots.style.display = "block";
-    chatInput.value = "";
-}
+    
+    // console.log(botResponse);
+    chatInput.value = ""; // إفراغ حقل الإدخال
+
+};
 
 sendChatBtn.addEventListener('click', handleChat);
